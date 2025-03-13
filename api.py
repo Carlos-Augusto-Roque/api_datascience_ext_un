@@ -4,9 +4,12 @@ from flask_sqlalchemy import SQLAlchemy
 # Inicializando o aplicativo Flask
 app = Flask('projeto')
 
+
+SQLALCHEMY_DATABASE_URI = 'mysql://jessica:senai%40134@extensaouniversitaria.mysql.database.azure.com/extensaouni'
+
 # Configuração do banco de dados
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False  # Corrigido para False
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://jessica:senai%40134@extensaouniversitaria.mysql.database.azure.com/extensaouni'
+app.config['SQLALCHEMY_DATABASE_URI'] = SQLALCHEMY_DATABASE_URI
 
 # Inicializando o SQLAlchemy
 mybd = SQLAlchemy(app)
@@ -25,6 +28,11 @@ class Emissao(mybd.Model):
 
     def to_json(self):
         return {"id": self.id, "ano_coleta": self.ano_coleta, "populacao": self.populacao, "qtd_residuos_coletados": self.qtd_residuos_coletados, "percentual_coleta_seletiva": self.percentual_coleta_seletiva, "destinacao_principal": self.destinacao_principal, "emissao_co2": self.emissao_co2, "tipo_residuo": self.tipo_residuo}
+
+@app.route('/')
+def index():
+    return "<h1>Olá, mundo!</h1>"
+
 
 # Rota para obter todos os valores
 @app.route("/dados", methods=["GET"])
