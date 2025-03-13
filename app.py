@@ -5,7 +5,8 @@ from flask_sqlalchemy import SQLAlchemy
 app = Flask('projeto')
 
 
-SQLALCHEMY_DATABASE_URI = 'mysql://jessica:senai%40134@extensaouniversitaria.mysql.database.azure.com/extensaouni'
+SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://jessica:senai%40134@extensaouniversitaria.mysql.database.azure.com:3306/extensaouni'
+                         
 
 # Configuração do banco de dados
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False  # Corrigido para False
