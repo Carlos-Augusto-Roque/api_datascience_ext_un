@@ -31,7 +31,7 @@ class Emissao(mybd.Model):
 
 @app.route('/')
 def index():
-    return "<h1>Olá, mundo!</h1>"
+    return "<h1>Olá, mundo, estou aqui tentando subir a api!</h1>"
 
 
 # Rota para obter todos os valores
